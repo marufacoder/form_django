@@ -1,0 +1,36 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<h1>Blog list</h1>
+<a href="{% url 'add_blog' %}" class="btn btn-sucess">Add Blog</a>
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>SL </th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Published Date</th>
+        <th>action</th>
+    </tr>
+</thead>  
+<tbody>
+    
+    {% for data in blog_data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.title}}</td>
+         <td>
+            <img src="{{data.blog_image.url}}" width="50px" alt="">
+           </td>
+          <td>{{data.publish_date}}</td>
+           <td><a href="{% url 'update_blog' data.id %}">edit</a></td>
+    </tr>
+        
+    {% endfor %}
+        
+</tbody>  
+</table>
+    
+{% endblock content %}
+
+    
